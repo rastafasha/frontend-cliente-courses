@@ -1047,3 +1047,14 @@ function _clickDoc() {
     // .on('click', '.search-trigger-active', openSideNav)
     // .on('click', '.side-nav-opened', closeSideNav)
 }
+
+// function banner_home(){
+//     var swiper = new Swiper('.banner-swiper-active', {
+//         effect: 'cards',
+//         grabCursor: true,
+//         pagination: {
+//             el: '.rbt-swiper-pagination',
+//             clickable: true,
+//         },
+//     });
+// }
