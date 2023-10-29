@@ -10,6 +10,9 @@ const routes: Routes = [
   { path:'auth', 
     loadChildren:() => import("./modules/auth/auth.module").then(m=>m.AuthModule)
   },
+  { path:'tienda-guest', 
+    loadChildren:() => import("./modules/tienda-guest/tienda-guest.module").then(m=>m.TiendaGuestModule)
+  },
   { path:'', redirectTo:'/', pathMatch:'full'},
   { path:'**', redirectTo:'error/404'},
 ];

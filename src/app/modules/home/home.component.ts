@@ -19,13 +19,15 @@ export class HomeComponent implements OnInit {
   discount_flash:any = [];
   discount_flash_courses:any = [];
 
+  discount_banner:any;
+
   constructor(
     public homeService: HomeService
   ){
     //activacion y uso de jquery
     setTimeout(()=>{
       HOMEINIT($);
-      // countdown();
+      countdownT();
     },50);
     //activacion y uso de jquery
   }
@@ -38,9 +40,9 @@ export class HomeComponent implements OnInit {
       this.discount_flash = resp.discount_flash;
       this.discount_flash_courses = resp.discount_flash_courses;
     })
-    setTimeout(()=>{
-      countdownT();
-    },50);
+    // setTimeout(()=>{
+    //   countdownT();
+    // },50);
   }
 
   getNewTotal(course:any,discount_flash:any ){
@@ -51,6 +53,13 @@ export class HomeComponent implements OnInit {
       return course.price_usd - discount_flash.discount;
 
     }
+  }
+
+  getTotalPriceCourse(course:any){
+    if(course.discount_g){
+      return this.getNewTotal(course,course.discount_g);
+    }
+    return course.price_usd;
   }
 
 }
