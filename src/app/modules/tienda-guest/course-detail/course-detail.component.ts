@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TiendaGuestService } from '../service/tienda-guest.service';
+import { CartService } from '../service/cart.service';
 
 declare function courseView():any;
 declare function showMoreBtn():any;
 declare function magnigyPopup():any;
+declare function alertDanger([]):any;
+declare function alertWarning([]):any;
+declare function alertSuccess([]):any;
 
 @Component({
   selector: 'app-course-detail',
@@ -19,15 +23,20 @@ export class CourseDetailComponent implements OnInit {
   courses_related_category:any=[];
   campaing_discount_id:any;
   DISCOUNT:any = null;
+  user:any = null;
 
   constructor(
     public activatedRoute:ActivatedRoute,
-    public tiendaGuestService: TiendaGuestService
+    public tiendaGuestService: TiendaGuestService,
+    public cartService: CartService,
+    public router: Router
   ) { 
 
   }
 
   ngOnInit(): void {
+    this.user = this.cartService.autService.user;
+    
     this.activatedRoute.params.subscribe((resp:any)=>{
       console.log(resp);
       this.slug = resp.slug;
@@ -55,7 +64,9 @@ export class CourseDetailComponent implements OnInit {
     setTimeout(()=>{
       courseView();
       showMoreBtn();
-    }, 50)
+    }, 50);
+    // alertSuccess('Alert Success')
+    
   }
 
 
@@ -74,6 +85,35 @@ export class CourseDetailComponent implements OnInit {
       return this.getNewTotal(course,course.discount_g);
     }
     return course.price_usd;
+  }
+
+  addCart(){
+    if(!this.user){
+      alertWarning("Necesitar registrate en la tienda");
+      this.router.navigateByUrl("auth/login");
+      return;
+    }
+    let data={
+      course_id: this.landing_course.id,
+        type_discount: this.landing_course.discount_g ? this.landing_course.discount_g.type_discount : null,
+        discount: this.landing_course.discount_g ? this.landing_course.discount_g.discount : null,
+        type_campaing: this.landing_course.discount_g ? this.landing_course.discount_g.type_campaing : null,
+        code_discount: this.landing_course.discount_g ? this.landing_course.discount_g.code : null,
+        code_cupon: null,
+        precio_unitario: this.landing_course.price_usd,
+        total: this.getTotalPriceCourse(this.landing_course),
+    }
+    this.cartService.registerCart(data).subscribe((resp:any)=>{
+      if(resp.message == 403){
+        alertDanger(resp.message_text);
+        return;
+      }else{
+        this.cartService.addCart(resp.cart);
+        alertSuccess('El Curso se agregó al carrito exitosamente!');
+
+      }
+
+    })
   }
 
 }

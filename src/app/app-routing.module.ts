@@ -7,11 +7,15 @@ const routes: Routes = [
   // canActivate: [AuthGuard],
     loadChildren:() => import("./modules/home/home.module").then(m=>m.HomeModule)
   },
-  { path:'auth', 
-    loadChildren:() => import("./modules/auth/auth.module").then(m=>m.AuthModule)
-  },
   { path:'tienda-guest', 
-    loadChildren:() => import("./modules/tienda-guest/tienda-guest.module").then(m=>m.TiendaGuestModule)
+  loadChildren:() => import("./modules/tienda-guest/tienda-guest.module").then(m=>m.TiendaGuestModule)
+  },
+  { path:'tienda-auth', 
+    loadChildren:() => import("./modules/tienda-auth/tienda-auth.module").then(m=>m.TiendaAuthModule)
+  },
+  { path:'auth', 
+    canActivate: [AuthGuard],
+    loadChildren:() => import("./modules/auth/auth.module").then(m=>m.AuthModule)
   },
   { path:'', redirectTo:'/', pathMatch:'full'},
   { path:'**', redirectTo:'error/404'},

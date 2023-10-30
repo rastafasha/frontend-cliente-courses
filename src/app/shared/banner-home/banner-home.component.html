@@ -76,8 +76,10 @@
                                                 <span class="current-price">{{getNewTotal(course, discount_banner)}} USD</span>
                                                 <span class="off-price">{{course.price_usd|currency}} USD</span>
                                             </div>
-                                            <a class="rbt-btn-link" [routerLink]="['/tienda-guest/landing-curso/',course.slug]" [queryParams]="{'campaing_discount':discount_banner.id}">Learn More<i
-                                                    class="feather-arrow-right"></i></a>
+                                            <a class="rbt-btn-link" href="#" onclick="return false;" (click)="addCart(course, discount_banner)">
+                                                <i class="feather-shopping-cart"></i>
+                                                Add to Cart
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
