@@ -80,11 +80,10 @@ export class HomeComponent implements OnInit {
       this.router.navigateByUrl("auth/login");
       return;
     }
-
-    
     if(discount_campaing){
       landing_course.discount_g = discount_campaing
     }
+    
     let data={
       course_id: landing_course.id,
         type_discount: landing_course.discount_g ? landing_course.discount_g.type_discount : null,
@@ -95,6 +94,7 @@ export class HomeComponent implements OnInit {
         precio_unitario: landing_course.price_usd,
         total: this.getTotalPriceCourse(landing_course),
     }
+    
     this.cartService.registerCart(data).subscribe((resp:any)=>{
       if(resp.message == 403){
         alertDanger(resp.message_text);

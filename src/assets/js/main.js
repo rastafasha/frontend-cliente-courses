@@ -1022,11 +1022,6 @@ function HOMEINIT($, undefined) {
 //fuciones personalizadas pasadas a js
 
 
-
-
-
-
-
 function _clickDoc() {
     var inputblur, inputFocus, openSideNav, closeSideNav;
     inputblur = function (e) {
@@ -1037,25 +1032,33 @@ function _clickDoc() {
     inputFocus = function (e) {
         $(this).parents('.form-group').addClass('focused');
     };
-    // openSideNav = function (e) {
-    //     e.preventDefault();
-    //     eduJs.sideNav.addClass('active');
-    //     $('.search-trigger-active').addClass('open');
-    //     eduJs._html.addClass('side-nav-opened');
-    // };
-
-    // closeSideNav = function (e) {
-    //     if (!$('.rbt-search-dropdown, .rbt-search-dropdown *:not(".search-trigger-active, .search-trigger-active *")').is(e.target)) {
-    //         eduJs.sideNav.removeClass('active');
-    //         $('.search-trigger-active').removeClass('open');
-    //         eduJs._html.removeClass('side-nav-opened');
-    //     }
-    // };
+    
     $(document)
     .on('blur', 'input,textarea,select', inputblur)
     .on('focus', 'input:not([type="radio"]),input:not([type="checkbox"]),textarea,select', inputFocus)
-    // .on('click', '.search-trigger-active', openSideNav)
-    // .on('click', '.side-nav-opened', closeSideNav)
+    
+}
+
+function _clickDocTwo() {
+    var inputblur, inputFocus, openSideNav, closeSideNav;
+   
+    openSideNav = function (e) {
+        e.preventDefault();
+        $('.rbt-search-dropdown').addClass('active');
+        $('.search-trigger-active').addClass('open');
+        $('html').addClass('side-nav-opened');
+    };
+
+    closeSideNav = function (e) {
+        if (!$('.rbt-search-dropdown, .rbt-search-dropdown *:not(".search-trigger-active, .search-trigger-active *")').is(e.target)) {
+            $('.rbt-search-dropdown').removeClass('active');
+            $('.search-trigger-active').removeClass('open');
+            $('html').removeClass('side-nav-opened');
+        }
+    };
+    $(document)
+    .on('click', '.search-trigger-active', openSideNav)
+    .on('click', '.side-nav-opened', closeSideNav)
 }
 
 function courseView() {
@@ -1096,11 +1099,9 @@ function  showMoreBtn() {
 }
 
 function magnigyPopup() {
-    // $(document).on('ready', function () {
         $('.popup-video').magnificPopup({
             type: 'iframe'
         });
-    // });
 }
 
 // function banner_home(){
@@ -1139,6 +1140,15 @@ function cartSidenav() {
     } 
 }
 
+function filterClickButton() {
+    $('.discover-filter-activation').on('click', function () {
+        $(this).toggleClass('open');
+        $('.default-exp-expand').slideToggle('400');
+    })
+   
+}
+
+//fuciones personalizadas pasadas a js
 
 
 //notificaciones

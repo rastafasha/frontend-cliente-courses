@@ -1,23 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, fromEvent } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/service/auth.service';
 import { CartService } from 'src/app/modules/tienda-guest/service/cart.service';
+import { TiendaGuestService } from 'src/app/modules/tienda-guest/service/tienda-guest.service';
 
 declare function cartSidenav():any;
+declare function _clickDocTwo():any;
 declare function alertSuccess([]):any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
+
+  @ViewChild("filter") filter?:ElementRef;
 
   listCarts: any = [];
   user:any = null;
   totalSum:any = 0;
+  
+  search:any = null;
+  source:any;
+  listCourses: any = [];
 
   constructor(
     public authService: AuthService,
-    public cartService: CartService
+    public cartService: CartService,
+    public router:Router,
+    public tiendaGuestService: TiendaGuestService,
 
   ) { }
 
@@ -28,7 +40,29 @@ export class HeaderComponent implements OnInit {
 
     setTimeout(()=>{
       cartSidenav();
+      _clickDocTwo();
     }, 50 )
+
+    
+  }
+
+  ngAfterViewInit(): void {
+    this.source = fromEvent(this.filter?.nativeElement,"keyup");
+    this.source.pipe(debounceTime(500)).subscribe((resp:any)=>{
+      console.log(this.search);
+      //el filtro
+      let data = {
+        search: this.search
+      }
+      if(this.search.lenght > 0){
+        this.tiendaGuestService.listCourses(data).subscribe((resp:any)=>{
+          console.log(resp);
+          this.listCourses = resp.courses.data;
+        })
+
+      }
+    })
+    
   }
 
   logout(){
@@ -59,4 +93,11 @@ export class HeaderComponent implements OnInit {
       this.cartService.removeItemCart(cart);
     })
   }
+
+  buscarCourses(){
+    // this.router.navigateByUrl("/tienda-guest/listado-de-cursos?search="+this.search);
+    window.location.href = "/tienda-guest/listado-de-cursos?search="+this.search;
+
+  }
+
 }

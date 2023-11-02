@@ -20,26 +20,8 @@ export class CartSideMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.authService.user;
-
-    // this.cart();
   }
 
-  cart(){
-    this.cartService.currentData$.subscribe((resp:any)=>{
-      console.log(resp);
-      this.listCarts = resp;
-      this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
-    })
-
-    if(this.user){
-      this.cartService.listCart().subscribe((resp:any)=>{
-        console.log(resp);
-        resp.carts.data.forEach((cart:any) => {
-          this.cartService.addCart(cart);
-        });
-      })
-    }
-  }
+  
 
 }

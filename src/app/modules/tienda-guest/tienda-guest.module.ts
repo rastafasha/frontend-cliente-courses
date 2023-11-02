@@ -8,16 +8,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FilterCoursesComponent } from './filter-courses/filter-courses.component';
 
 
 @NgModule({
   declarations: [
     TiendaGuestComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    FilterCoursesComponent
   ],
   exports: [
     TiendaGuestComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    FilterCoursesComponent
   ],
   imports: [
     CommonModule,

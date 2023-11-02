@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TiendaAuthComponent } from './tienda-auth.component';
 import { ListCartComponent } from './list-cart/list-cart.component';
+import { ProfileClientComponent } from './profile-client/profile-client.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,9 @@ const routes: Routes = [
     children:[
       {
         path:'carrito-de-compra', component: ListCartComponent
+      },
+      {
+        path:'perfil-del-cliente', component: ProfileClientComponent
       }
     ]
   }

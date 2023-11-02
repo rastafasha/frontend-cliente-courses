@@ -96,13 +96,13 @@
                                         <div class="rbt-card-top">
                                             <div class="rbt-review">
                                                 <div class="rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star" [ngClass]="{'rating':coursef.avg_reviews < 1}"></i>
+                                                <i class="fas fa-star" [ngClass]="{'rating':coursef.avg_reviews < 2}"></i>
+                                                <i class="fas fa-star" [ngClass]="{'rating':coursef.avg_reviews < 3}"></i>
+                                                <i class="fas fa-star" [ngClass]="{'rating':coursef.avg_reviews < 4}"></i>
+                                                <i class="fas fa-star" [ngClass]="{'rating':coursef.avg_reviews < 5}"></i>
                                                 </div>
-                                                <span class="rating-count"> (15 Reviews)</span>
+                                                <span class="rating-count"> ({{coursef.count_reviews}} Reviews)</span>
                                             </div>
                                             <div class="rbt-bookmark-btn">
                                                 <a class="rbt-round-btn" title="Bookmark" href="#"><i
@@ -113,7 +113,7 @@
                                         </h4>
                                         <ul class="rbt-meta">
                                             <li><i class="feather-book"></i>{{coursef.count_class}} Lessons</li>
-                                            <li><i class="feather-users"></i>40 Students</li>
+                                            <li><i class="feather-users"></i>{{coursef.count_students}} Students</li>
                                             <li><i class="feather-play"></i>{{coursef.time_course}}</li>
                                         </ul>
     
@@ -170,13 +170,13 @@
                         <div class="rbt-card-top">
                             <div class="rbt-review">
                                 <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 1}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 2}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 3}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 4}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 5}"></i>
                                 </div>
-                                <span class="rating-count"> (15 Reviews)</span>
+                                <span class="rating-count"> ({{course.count_reviews}} Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
                                 <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
@@ -187,7 +187,7 @@
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>{{course.count_class}} Lessons</li>
-                            <li><i class="feather-users"></i>40 Students</li>
+                            <li><i class="feather-users"></i>{{course.count_students}} Students</li>
                             <li><i class="feather-play"></i>{{course.time_course}}</li>
                         </ul>
                         <p class="rbt-card-text">{{course.description}}</p>
@@ -956,13 +956,13 @@
                                                 <div class="rbt-card-top">
                                                     <div class="rbt-review">
                                                         <div class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 1}"></i>
+                                                            <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 2}"></i>
+                                                            <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 3}"></i>
+                                                            <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 4}"></i>
+                                                            <i class="fas fa-star" [ngClass]="{'rating':course.avg_reviews < 5}"></i>
                                                         </div>
-                                                        <span class="rating-count"> (15 Reviews)</span>
+                                                        <span class="rating-count"> ({{course.count_reviews}} Reviews)</span>
                                                     </div>
                                                     <div class="rbt-bookmark-btn">
                                                         <a class="rbt-round-btn" title="Bookmark" href="#"><i
@@ -973,7 +973,7 @@
                                                 </h4>
                                                 <ul class="rbt-meta">
                                                     <li><i class="feather-book"></i>{{course.count_class}} Lessons</li>
-                                                    <li><i class="feather-users"></i>40 Students</li>
+                                                    <li><i class="feather-users"></i>{{course.count_students}} Students</li>
                                                     <li><i class="feather-play"></i>{{course.time_course}}</li>
                                                 </ul>
 

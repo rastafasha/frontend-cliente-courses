@@ -24,7 +24,7 @@ export class CourseDetailComponent implements OnInit {
   campaing_discount_id:any;
   DISCOUNT:any = null;
   user:any = null;
-
+  isHaveCourse: any = false;
   constructor(
     public activatedRoute:ActivatedRoute,
     public tiendaGuestService: TiendaGuestService,
@@ -58,8 +58,8 @@ export class CourseDetailComponent implements OnInit {
         setTimeout(()=>{
           magnigyPopup();
         }, 50)
+        this.isHaveCourse = resp.isHaveCourse;
       }
-     
     )
     setTimeout(()=>{
       courseView();
