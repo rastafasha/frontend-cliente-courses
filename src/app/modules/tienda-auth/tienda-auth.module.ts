@@ -9,13 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
+import { CourseLessonComponent } from './course-lesson/course-lesson.component';
 
 
 @NgModule({
   declarations: [
     TiendaAuthComponent,
     ListCartComponent,
-    ProfileClientComponent
+    ProfileClientComponent,
+    CourseLessonComponent
   ],
   exports: [
     TiendaAuthComponent,

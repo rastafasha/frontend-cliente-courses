@@ -226,7 +226,7 @@
                             </div>
                             <div class="media align-items-center">
                                 <div class="thumbnail">
-                                    <a href="#">
+                                    <a href="#" onclick="return false">
                                         <img [src]="landing_course.instructor.avatar"
                                             [alt]="landing_course.instructor.full_name">
                                     </a>
@@ -235,7 +235,7 @@
                                     <div class="author-info">
                                         <h5 class="title">
                                             <a class="hover-flip-item-wrapper"
-                                                href="author.html">{{landing_course.instructor.full_name}}</a>
+                                            href="#" onclick="return false">{{landing_course.instructor.full_name}}</a>
                                         </h5>
                                         <span class="b3 subtitle">{{landing_course.instructor.profesion}} </span>
                                         <ul class="rbt-meta mb--20 mt--10">
@@ -708,6 +708,14 @@
                                 <div class="buy-now-btn mt--15">
                                     <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" href="#">
                                         <span class="btn-text">Buy Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="isHaveCourse">
+                                <div class="add-to-card-button mt--15">
+                                    <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center"  [href]="'/tienda-auth/mi-curso/'+slug">
+                                        <span class="btn-text">Ir al Curso</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     </a>
                                 </div>

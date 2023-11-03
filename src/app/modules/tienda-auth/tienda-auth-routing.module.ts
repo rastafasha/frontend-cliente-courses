@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TiendaAuthComponent } from './tienda-auth.component';
 import { ListCartComponent } from './list-cart/list-cart.component';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
+import { CourseLessonComponent } from './course-lesson/course-lesson.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
       },
       {
         path:'perfil-del-cliente', component: ProfileClientComponent
+      },
+      {
+        path:'mi-curso/:slug', component: CourseLessonComponent
       }
     ]
   }

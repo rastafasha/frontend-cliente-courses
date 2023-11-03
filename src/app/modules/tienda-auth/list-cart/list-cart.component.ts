@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../tienda-guest/service/cart.service';
+import { Router } from '@angular/router';
 
 declare function alertSuccess([]):any;
 declare function alertDanger([]):any;
@@ -20,6 +21,7 @@ export class ListCartComponent implements OnInit {
 
   constructor(
     public cartService:CartService,
+    public router:Router
 
   ) { }
 
@@ -148,6 +150,9 @@ export class ListCartComponent implements OnInit {
           }
         this.cartService.checkout(dataT).subscribe((resp:any)=>{
           console.log(resp);
+          alertSuccess("Compra satisfactoria");
+          this.emptyCart();
+          return this.router.navigateByUrl("/tienda-auth/perfil-del-cliente")
         })
           // return actions.order.capture().then(captureOrderHandler);
       },
@@ -157,5 +162,11 @@ export class ListCartComponent implements OnInit {
           console.error('An error prevented the buyer from checking out with PayPal');
       }
   }).render(this.paypalElement?.nativeElement);
+  }
+
+  emptyCart():void{
+    this.listCarts = [];
+    this.totalSum = 0;
+    this.cartService.resetCart();
   }
 }

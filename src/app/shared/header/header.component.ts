@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   search:any = null;
   source:any;
   listCourses: any = [];
+  categories:any = [];
 
   constructor(
     public authService: AuthService,
@@ -36,14 +37,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.user = this.authService.user;
 
-    this.cart();
+    this.cartService.currentData$.subscribe((resp:any)=>{
+      console.log(resp);
+      this.listCarts = resp;
+      this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
+    })
+
+    if(this.user){
+      this.cartService.listCart().subscribe((resp:any)=>{
+        console.log(resp);
+        resp.carts.data.forEach((cart:any) => {
+          this.cartService.addCart(cart);
+        });
+      })
+    }
 
     setTimeout(()=>{
       cartSidenav();
       _clickDocTwo();
     }, 50 )
 
-    
+    this.listarOpciones();
   }
 
   ngAfterViewInit(): void {
@@ -69,22 +83,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.authService.logout();
   }
 
-  cart(){
-    this.cartService.currentData$.subscribe((resp:any)=>{
-      console.log(resp);
-      this.listCarts = resp;
-      this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
-    })
-
-    if(this.user){
-      this.cartService.listCart().subscribe((resp:any)=>{
-        console.log(resp);
-        resp.carts.data.forEach((cart:any) => {
-          this.cartService.addCart(cart);
-        });
-      })
-    }
-  }
+  
 
   removeItem(cart:any){
     this.cartService.deleteCart(cart.id).subscribe((resp:any)=>{
@@ -98,6 +97,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     // this.router.navigateByUrl("/tienda-guest/listado-de-cursos?search="+this.search);
     window.location.href = "/tienda-guest/listado-de-cursos?search="+this.search;
 
+  }
+
+  listarOpciones(){
+    this.tiendaGuestService.listConfig().subscribe((resp:any)=>{
+      console.log(resp);
+      this.categories = resp.categories;
+    })
   }
 
 }
