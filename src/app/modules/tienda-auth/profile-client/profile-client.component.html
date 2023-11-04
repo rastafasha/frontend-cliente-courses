@@ -17,7 +17,14 @@
                     <div class="rbt-tutor-information">
                         <div class="rbt-tutor-information-left">
                             <div class="thumbnail rbt-avatars size-lg">
-                                <img  *ngIf="user" [src]="user.avatar" alt="Instructor">
+                                <div *ngIf="!user.avatar">
+                                    <img src="assets/images/team/avatar.jpg" alt="User Images">
+
+                                </div>
+                                <div *ngIf="user.avatar">
+                                    <img [src]="user.avatar" [alt]="user.name">
+                                </div>
+                                <!-- <img  *ngIf="user" [src]="user.avatar" alt="Instructor"> -->
                             </div>
                             <div class="tutor-content">
                                 <h5 class="title" *ngIf="user">{{user.name+' '+user.surname}}</h5>
@@ -653,12 +660,18 @@
                                             <div class="rbt-tutor-information">
                                                 <div class="rbt-tutor-information-left">
                                                     <div class="thumbnail rbt-avatars size-lg position-relative">
-                                                        <img *ngIf="user" [src]="user.avatar" alt="Instructor">
-                                                        <div class="rbt-edit-photo-inner">
+                                                        <div *ngIf="!user.avatar">
+                                                            <img src="assets/images/team/avatar.jpg" alt="User Images">
+
+                                                        </div>
+                                                        <div *ngIf="user.avatar">
+                                                            <img [src]="user.avatar" [alt]="user.name">
+                                                        </div>
+                                                        <!-- <div class="rbt-edit-photo-inner">
                                                             <button class="rbt-edit-photo" title="Upload Photo">
                                                                 <i class="feather-camera"></i>
                                                             </button>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                                 <div class="rbt-tutor-information-right">

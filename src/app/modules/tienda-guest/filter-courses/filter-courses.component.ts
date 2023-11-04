@@ -7,6 +7,7 @@ declare function showMoreBtn():any;
 declare function alertWarning([]):any;
 declare function alertDanger([]):any;
 declare function alertSuccess([]):any;
+declare function HOMEINIT([]):any;
 declare var $:any;
 
 @Component({
@@ -48,6 +49,7 @@ export class FilterCoursesComponent implements OnInit {
     this.listarOpciones();
     setTimeout(()=>{
       showMoreBtn();
+      HOMEINIT($);
     }, 50)
 
     this.activatedRoute.queryParams.subscribe((resp:any)=>{

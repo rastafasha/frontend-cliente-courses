@@ -48,10 +48,10 @@ export class HomeComponent implements OnInit {
       this.group_courses_categories = resp.group_courses_categories;
       this.discount_flash = resp.discount_flash;
       this.discount_flash_courses = resp.discount_flash_courses;
-    })
     setTimeout(()=>{
       countdownT();
     },50);
+    })
 
     this.user = this.cartService.autService.user;
   }
