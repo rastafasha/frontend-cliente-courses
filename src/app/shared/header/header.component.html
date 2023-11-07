@@ -125,8 +125,9 @@
                 <div class="header-left rbt-header-content">
                     <div class="header-info">
                         <div class="logo">
-                            <a routerLink="/">
-                                <img src="assets/images/logo/logo.png" alt="Education Logo Images">
+                            <a href="/">
+                                <!-- <img src="assets/images/logo/logo.png" alt="Education Logo Images"> -->
+                                <img src="./assets/images/logo/logo-guindales.jpeg" alt="Guindales">
                             </a>
                         </div>
                     </div>
@@ -308,7 +309,7 @@
   
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a href="#" *ngIf="user"><i class="feather-user"></i>{{user.name}}</a>
-                            <a href="/auth/login" *ngIf="!user"><i class="feather-lock"></i>Ingresar</a>
+                            <a routerLink="/auth/login" *ngIf="!user"><i class="feather-lock"></i>Ingresar</a>
                             <div class="rbt-user-menu-list-wrapper"  *ngIf="user">
                                 <div class="inner">
                                     <div class="rbt-admin-profile">

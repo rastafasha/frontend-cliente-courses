@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     //activacion y uso de jquery
   }
   ngOnInit(): void {
-    
+    window.scrollTo(0,0);
     this.homeService.home().subscribe((resp:any)=>{
       console.log(resp);
       this.CATEGORIES = resp.categories;

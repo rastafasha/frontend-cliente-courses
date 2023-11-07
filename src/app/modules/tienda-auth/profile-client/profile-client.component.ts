@@ -43,6 +43,7 @@ export class ProfileClientComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.tiendaAuthService.profileClient().subscribe((resp:any)=>{
       console.log(resp);
       this.enrolledCourseCount = resp.enrolledCourseCount;

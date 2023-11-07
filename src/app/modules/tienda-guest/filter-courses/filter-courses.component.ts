@@ -44,6 +44,7 @@ export class FilterCoursesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {  
+    window.scrollTo(0,0);
     this.user = this.tiedaGuestService.authService.user;
     // this.iniciarPriceRange();
     this.listarOpciones();

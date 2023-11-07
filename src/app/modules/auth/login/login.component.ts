@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
       (res:any)=>{
         console.log(res);
         if(res){
-          window.location.reload();
+          // window.location.reload();
+          this.router.navigateByUrl('/');
         }else{
           alert('Las Credenciales no existen')
         }

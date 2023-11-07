@@ -24,6 +24,7 @@ export class CourseLessonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.activatedRoute.params.subscribe((resp:any)=>{
       console.log(resp);
       this.slug = resp.slug;

@@ -35,6 +35,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.user = this.cartService.autService.user;
     
     this.activatedRoute.params.subscribe((resp:any)=>{
