@@ -8,5 +8,5 @@ export const environment = {
   URL_BACKEND: 'https://tudigitalmanger.com/backend-api-courses/',
   URL_SERVICIOS: 'https://tudigitalmanger.com/backend-api-courses/public/api',
   // URL_FROTEND: 'https://cursos.tudigitalmanger.com/',
-  URL_FROTEND: 'https://tudigitalmanger.com/cursoss',
+  URL_FROTEND: 'https://tudigitalmanger.com/cursos',
 };
