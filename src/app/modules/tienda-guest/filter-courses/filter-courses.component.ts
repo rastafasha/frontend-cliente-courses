@@ -3,12 +3,12 @@ import { TiendaGuestService } from '../service/tienda-guest.service';
 import { CartService } from '../service/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+declare var $:any;
 declare function showMoreBtn():any;
 declare function alertWarning([]):any;
 declare function alertDanger([]):any;
 declare function alertSuccess([]):any;
 declare function HOMEINIT([]):any;
-declare var $:any;
 
 @Component({
   selector: 'app-filter-courses',
@@ -48,10 +48,7 @@ export class FilterCoursesComponent implements OnInit {
     this.user = this.tiedaGuestService.authService.user;
     // this.iniciarPriceRange();
     this.listarOpciones();
-    setTimeout(()=>{
-      showMoreBtn();
-      HOMEINIT($);
-    }, 50)
+    
 
     this.activatedRoute.queryParams.subscribe((resp:any)=>{
       console.log(resp);
@@ -89,6 +86,10 @@ export class FilterCoursesComponent implements OnInit {
       this.instructores = resp.instructores;
       this.levels = resp.levels;
       this.idiomas = resp.idiomas;
+
+      setTimeout(()=>{
+        showMoreBtn();
+      }, 50)
     })
   }
 

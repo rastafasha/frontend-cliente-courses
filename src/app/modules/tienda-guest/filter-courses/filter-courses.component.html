@@ -45,14 +45,8 @@
                                     <li class="course-switch-item"><button class="rbt-list-view" title="List Layout"><i class="feather-list"></i> <span class="text">On</span></button></li>
                                 </ul> -->
                                 <ul class="course-switch-layout">
-                                    <li class="course-switch-item"><button class="rbt-grid-view"
-                                            [ngClass]="{'active': selectedOption == 1}" title="Grid Layout"
-                                            (click)="addOption(1)"><i class="feather-grid"></i> <span
-                                                class="text">Off</span></button></li>
-                                    <li class="course-switch-item"><button class="rbt-list-view"
-                                            [ngClass]="{'active': selectedOption == 2}" title="List Layout"
-                                            (click)="addOption(2)"><i class="feather-list"></i> <span
-                                                class="text">On</span></button></li>
+                                    <li class="course-switch-item"><button class="rbt-grid-view" [ngClass]="{'active': selectedOption == 1}" title="Grid Layout" (click)="addOption(1)"><i class="feather-grid"></i> <span class="text">Off</span></button></li>
+                                    <li class="course-switch-item"><button class="rbt-list-view" [ngClass]="{'active': selectedOption == 2}" title="List Layout" (click)="addOption(2)"><i class="feather-list"></i> <span class="text">On</span></button></li>
                                 </ul>
                             </div>
                             <!-- <div class="rbt-short-item">
@@ -103,7 +97,7 @@
                                                 <ng-container *ngFor="let category of categories">
                                                     <li class="rbt-check-group">
                                                         <input [id]="'cat-list-'+category.id" type="checkbox"
-                                                            [name]="'cat-category.idist-'+category.id"
+                                                            [name]="'cat-list-'+category.id"
                                                             (click)="addCategorie(category.id)">
                                                         <label [attr.for]="'cat-list-'+category.id">{{category.nombre}}
                                                             <span
